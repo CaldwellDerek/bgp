@@ -3,30 +3,45 @@ body {
     min-width: 100%;
     display: grid;
     grid-template-rows: 6.75rem 100vh 6.75rem;
-    grid-template-columns: 15% 70% 15%;
+    grid-template-columns: 5% 90% 5%;
+    background: black;
+    color: white;
 }
+
+/* header -------------------------------------------------------------------- */
 
 header {
     grid-row: 1;
     grid-column-start: 1;
     grid-column-end: 4;
-    background: black;
-    color: white;
     font-size: 2rem;
     display: flex !important;
     justify-content: center;
     align-items: center;
 }
 
+/* main -------------------------------------------------------------------- */
+
 main {
     grid-row: 2;
     grid-column: 2;
-    background: blue;
+    display: grid !important;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    background-color:darkcyan;
 }
+
+.game-image {
+}
+
+.game-info {
+
+}
+
+/* footer -------------------------------------------------------------------- */
 
 footer {
     grid-row: 3;
     grid-column-start: 1;
     grid-column-end: 4;
-    background: red;
 }
