@@ -63,6 +63,45 @@ main {
     justify-content: center;
 }
 
+.modal-content {
+    color: white !important;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+}
+
+.modal-header {
+    grid-row: 1;
+    grid-column-start: 1;
+    grid-column-end: 7;
+    text-align: center;
+}
+
+.modal-publisher {
+    grid-row: 2;
+}
+
+.modal-year-published {
+    grid-row: 3;
+}
+
+.modal-number-players {
+    grid-row: 4;
+}
+
+.modal-age {
+    grid-row: 5;
+}
+
+.modal-total-playtime {
+    grid-row: 6;
+}
+
+.input-field {
+    grid-column-start: 3;
+    grid-column-end: 5;
+}
+
 .modal-footer {
     background: black !important;
 }
