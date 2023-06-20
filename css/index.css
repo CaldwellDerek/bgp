@@ -180,3 +180,25 @@ footer {
     grid-column-start: 1;
     grid-column-end: 4;
 }
+
+.footer-nav {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.github-logo {
+    height: 2.3rem;
+    width: 2.3rem;
+}
+
+.linkedin-logo {
+    height: 2.5rem;
+    width: 2.5rem;
+}
+
+.github-logo,
+.linkedin-logo {
+    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(313deg) brightness(109%) contrast(101%);
+}
