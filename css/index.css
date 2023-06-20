@@ -1,8 +1,8 @@
 body {
-    min-height: 100%;
-    min-width: 100%;
+    max-height: 100%;
+    max-width: 100%;
     display: grid;
-    grid-template-rows: 6.75rem 100vh 6.75rem;
+    grid-template-rows: 6.75rem repeat(2, 1fr) 6.75rem;
     grid-template-columns: 5% 90% 5%;
     background: black;
     color: white;
@@ -22,13 +22,13 @@ header {
 
 /* content -------------------------------------------------------------------- */
 
-main {
+.game-content {
     grid-row: 2;
     grid-column: 2;
     display: grid !important;
     row-gap: 1rem;
     grid-template-columns: repeat(6, 1fr);
-    grid-template-rows: repeat(6, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     background-color:darkcyan;
     padding: 1rem;
     column-gap: 1rem;
@@ -159,10 +159,24 @@ main {
     margin: 0 0.5rem;
 }
 
+/* Similar Games -------------------------------------------------------------------- */
+
+.similar-games {
+    grid-row: 3;
+    grid-column: 2;
+    /* width: 70%; */
+    /* margin: 0 auto; */
+
+}
+
+.collapsible-header {
+    background: black !important;
+}
+
 /* footer -------------------------------------------------------------------- */
 
 footer {
-    grid-row: 3;
+    grid-row: 4;
     grid-column-start: 1;
     grid-column-end: 4;
 }
