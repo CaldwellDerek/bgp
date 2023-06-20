@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./css/index.css">
     <!-- Materialize CSS -->
     <link type="text/css" rel="stylesheet" href="./css/materialize.css"  media="screen,projection"/>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Board Game Party</title>
   </head>
   <body>
@@ -15,9 +16,25 @@
     </header>
     <main>
         <div class="game-search">
-          <div class="game-search-container">
+          <div class="game-search-bar">
             <input placeholder="Search by Name" id="first_name" type="text" class="validate">
-            <a class="waves-effect waves-light btn search-btn">button</a>
+            <button class="btn waves-effect waves-light" type="button" name="action">Search
+              <i class="material-icons right">search</i>
+            </button>
+          </div>
+          <div class="game-search-options">
+            <!-- Modal Trigger -->
+            <a class="waves-effect waves-light btn modal-trigger" href="#modal1">More Options</a>
+            <!-- Modal -->
+            <div id="modal1" class="modal">
+              <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+              </div>
+              <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+              </div>
+            </div>
           </div>
         </div>
         <div class="game-image"></div>
@@ -30,6 +47,7 @@
 
     <!-- Materialize JS -->
     <script type="text/javascript" src="./js/materialize.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
   </body>
 </html>
       

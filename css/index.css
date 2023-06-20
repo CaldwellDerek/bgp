@@ -40,38 +40,28 @@ main {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(3, 1fr);
+    row-gap: 1rem;
     background: darkgreen;
 }
 
-.game-search-container {
+.game-search-bar {
     grid-row: 2;
     grid-column-start: 1;
     grid-column-end: 7;
     display: flex;
     align-items: center;
-    column-gap: 1rem;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    column-gap: 2rem;
+    padding-left: 4rem;
+    padding-right: 4rem;
 }
 
-/* .validate {
-    grid-column-start: 2;
-    grid-column-end: 6;
-    grid-row: 2;
+.game-search-options {
+    grid-row: 3;
+    grid-column-start: 3;
+    grid-column-end: 5;
+    display: flex;
+    justify-content: center;
 }
-
-.search-btn {
-    grid-column-start: 6;
-    grid-column-end: 7;
-    grid-row: 2;
-} */
-
-/* .game-image {
-}
-
-.game-info {
-
-} */
 
 /* footer -------------------------------------------------------------------- */
 
