@@ -8,6 +8,8 @@
     <!-- Materialize CSS -->
     <link type="text/css" rel="stylesheet" href="./css/materialize.css"  media="screen,projection"/>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="./images/favicon.png" type="image/x-icon">
     <title>Board Game Party</title>
   </head>
   <body>
@@ -17,7 +19,7 @@
     <main>
         <div class="game-search">
           <div class="game-search-bar">
-            <input placeholder="Search by Name" id="first_name" type="text" class="validate">
+            <input placeholder="Search by Name" id="first_name" type="text" class="validate white-text">
             <button class="btn waves-effect waves-light" type="button" name="action">Search
               <i class="material-icons right">search</i>
             </button>
@@ -37,16 +39,16 @@
                   <input placeholder="Publisher" class="modal-publisher validate white-text" type="text">
                 </div>
                 <div class="input-field">
-                  <input placeholder="Year Published" class="modal-year-published validate white-text" type="text">
+                  <input placeholder="Year Published" class="modal-year-published validate white-text" type="number" min="0">
                 </div>
                 <div class="input-field">
-                  <input placeholder="Number of Players" class="modal-number-players validate white-text" type="text">
+                  <input placeholder="Number of Players" class="modal-number-players validate white-text" type="number" min="2">
                 </div>
                 <div class="input-field">
-                  <input placeholder="Age Group"  type="text" class="modal-age validate white-text">
+                  <input placeholder="Age Group"  type="number" class="modal-age validate white-text" min="0">
                 </div>
                 <div class="input-field">
-                  <input placeholder="Total Playtime" class="modal-total-playtime validate white-text" type="text">
+                  <input placeholder="Total Playtime (MINUTES)" class="modal-total-playtime validate white-text" type="number" min="0">
                 </div>
 
               </div>
