@@ -63,6 +63,16 @@ main {
     justify-content: center;
 }
 
+.modal-footer {
+    background: black !important;
+}
+
+#modal1 {
+    background: black;
+}
+
+
+
 /* footer -------------------------------------------------------------------- */
 
 footer {
