@@ -1,6 +1,6 @@
 const modalOptions = {
-    startingTop: "50%",
-    endingTop: "20%",
+    startingTop: "5%",
+    endingTop: "5%",
     opacity: 0.7
 };
 
