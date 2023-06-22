@@ -153,15 +153,23 @@ header {
     font-size: 2.5rem;
 }
 
+.game-info ul {
+    position: relative;
+}
+
 .game-info li {
     display: inline;
-    margin: 0 0.5rem;
+    margin: 0 0.75rem;
 }
 
 .game-info img {
     height: 2rem;
     width: 2rem;
     filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(131deg) brightness(103%) contrast(101%);
+    vertical-align: middle;
+    position: relative;
+    bottom: 0.1rem;
+    margin-right: 0.4rem;
 }
 
 /* Similar Games -------------------------------------------------------------------- */
