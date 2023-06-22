@@ -114,7 +114,7 @@ header {
 
 .game-image {
     grid-row-start: 2;
-    grid-row-end: 6;
+    grid-row-end: 5;
     grid-column-start: 1;
     grid-column-end: 3;
     display: flex;
@@ -131,7 +131,7 @@ header {
 
 .game-info {
     grid-row-start: 2;
-    grid-row-end: 6;
+    grid-row-end: 5;
     grid-column-start: 3;
     grid-column-end: 7;
     display: flex;
@@ -163,24 +163,41 @@ header {
 
 }
 
+.similar-games-title {
+    grid-row: 5;
+    grid-column-start: 2;
+    grid-column-end: 6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.similar-games-title h2 {
+    font-size: 2.5rem;
+}
+
 .collapsible-header {
     background: black !important;
 }
 
 .similar-game-info {
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
+    text-align: center;
 }
 
 .similar-game-info img {
-    max-height: 20rem;
-    max-width: 20rem;
+    width: 70%;
+    height: 70%;
+    margin-bottom: 2rem;
 }
 
 .similar-game-info p {
-    width: 50%;
+    width: 70%;
     padding: 0.5rem;
+    margin-bottom: 2rem;
 }
 
 /* footer -------------------------------------------------------------------- */
