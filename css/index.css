@@ -6,7 +6,8 @@ body {
     color: white;
 }
 
-span {
+span,
+a {
     font-weight: bold;
 }
 
@@ -185,6 +186,16 @@ header {
 
 .game-info-links li {
     margin: 0 0.5rem;
+}
+
+.game-info-links a {
+    color: white;
+    transition: color 0.5s;
+}
+
+.game-info-links a:hover {
+    color: darkgray
+
 }
 
 /* Similar Games -------------------------------------------------------------------- */
