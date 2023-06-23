@@ -18,8 +18,7 @@ body {
     color: var(--text-color);
 }
 
-span,
-a {
+span {
     font-weight: bold;
 }
 
@@ -32,21 +31,23 @@ h6 {
     color: var(--header-color);
 }
 
-button {
+button,
+.external-link {
     color: var(--text-color) !important;
     background: var(--button-bg-color) !important;
-    border-color: var(--button-border-color) !important;
+    border: 0.15rem solid var(--button-border-color);
     padding: 1rem 1rem;
-    border-radius: .25rem;
     transition: background .5s;
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.external-link:hover {
     background: var(--button-hover-color) !important;
 }
 
-button:active {
+button:active,
+.external-link:active {
     background: var(--button-hover-color) !important;
 }
 
@@ -186,6 +187,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 2rem;
 }
 
 .game-info p {
@@ -219,25 +221,11 @@ header {
     margin: 0 0.5rem;
 }
 
-.game-info-links {
+.game-info-buttons {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin-bottom: 2rem;
-}
-
-.game-info-links li {
-    margin: 0 0.5rem;
-}
-
-.game-info-links a {
-    color: var(--text-color);
-    transition: color 0.5s;
-}
-
-.game-info-links a:hover {
-    color: var(--link-hover-color);
-
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Similar Games -------------------------------------------------------------------- */
