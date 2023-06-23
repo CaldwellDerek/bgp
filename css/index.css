@@ -1,15 +1,56 @@
+:root {
+    --bg-color: #000;
+    --header-color: #FFF;
+    --text-color: #FFF;
+    --button-bg-color: #5A5A5A;
+    --button-hover-color: red;
+    --button-border-color: #FFF;
+    --link-hover-color: #5A5A5A;
+    --footer-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(313deg) brightness(109%) contrast(101%);
+    --footer-filter-hover: invert(36%) sepia(0%) saturate(0%) hue-rotate(183deg) brightness(92%) contrast(85%);
+}
+
 body {
     display: grid;
     grid-template-rows: 6.75rem 100% 6.75rem;
     grid-template-columns: 5% 90% 5%;
-    background: black;
-    color: white;
+    background: var(--bg-color);
+    color: var(--text-color);
 }
 
 span,
 a {
     font-weight: bold;
 }
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: var(--header-color);
+}
+
+button {
+    color: var(--text-color) !important;
+    background: var(--button-bg-color) !important;
+    border-color: var(--button-border-color) !important;
+    padding: 1rem 1rem;
+    border-radius: .25rem;
+    transition: background .5s;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--button-hover-color) !important;
+}
+
+button:active {
+    background: var(--button-hover-color) !important;
+}
+
+
 
 /* header -------------------------------------------------------------------- */
 
@@ -65,12 +106,13 @@ header {
     grid-column-end: 5;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 /*  Modal -------------------------------------------------------------------- */
 
 .modal-content {
-    color: white !important;
+    color: var(--text-color) !important;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -109,11 +151,11 @@ header {
 }
 
 .modal-footer {
-    background: black !important;
+    background: var(--bg-color) !important;
 }
 
 #modal1 {
-    background: black;
+    background: var(--bg-color);
 }
 
 /* Game Image -------------------------------------------------------------------- */
@@ -189,12 +231,12 @@ header {
 }
 
 .game-info-links a {
-    color: white;
+    color: var(--text-color);
     transition: color 0.5s;
 }
 
 .game-info-links a:hover {
-    color: darkgray
+    color: var(--link-hover-color);
 
 }
 
@@ -222,7 +264,7 @@ header {
 }
 
 .collapsible-header {
-    background: black !important;
+    background: var(--bg-color) !important;
     justify-content: center !important;
 }
 
@@ -273,7 +315,7 @@ footer {
 
 .github-logo,
 .linkedin-logo {
-    filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(313deg) brightness(109%) contrast(101%);
+    filter: var(--footer-filter);
 }
 
 @media screen and (min-width: 120.5rem) {

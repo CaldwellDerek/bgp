@@ -2980,7 +2980,7 @@ $jscomp.polyfill = function (e, r, p, m) {
     }, {
       key: "_handleTriggerClick",
       value: function _handleTriggerClick(e) {
-        var $trigger = $(e.target).closest('.modal-trigger');
+        var $trigger = $(e.target).closest('.trigger-modal');
         if ($trigger.length) {
           var modalId = M.getIdFromTrigger($trigger[0]);
           var modalInstance = document.getElementById(modalId).M_Modal;
