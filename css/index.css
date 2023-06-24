@@ -14,10 +14,13 @@
     --button-bg-color: #6F1D1B;
     --button-border-color: #6F1D1B;
     --button-hover-color: #432818;
+    --tooltip-bg: #432818;
+    --tooltip-color: #FFE6A7;
     --image-border: #6F1D1B;
     --similar-game-border: #432818;
     --filter: invert(15%) sepia(32%) saturate(3852%) hue-rotate(339deg) brightness(95%) contrast(96%);
     --filter-hover: invert(10%) sepia(10%) saturate(3328%) hue-rotate(339deg) brightness(98%) contrast(93%);
+    --game-info-filter: invert(8%) sepia(10%) saturate(6232%) hue-rotate(350deg) brightness(92%) contrast(89%);
     font-size: 16px;
 }
 
@@ -33,7 +36,7 @@ body {
     display: grid;
     grid-template-rows: 22rem auto auto 5rem;
     grid-template-columns: 5% 90% 5%;
-    row-gap: 3rem;
+    row-gap: 6rem;
 }
 
 span {
@@ -42,7 +45,8 @@ span {
 
 p,
 button,
-a {
+a,
+.tooltip {
     font-family: 'Fira Sans', sans-serif;
 }
 
@@ -121,6 +125,7 @@ input::placeholder {
     color: var(--site-title-color);
     font-family: 'Luckiest Guy', sans-serif;
     letter-spacing: 0.3rem;
+    text-align: center;
 }
 
 .game-search {
@@ -229,8 +234,12 @@ input::placeholder {
     padding: 2rem;
 }
 
+.game-info h1 {
+    margin-bottom: 2.5rem;
+}
+
 .game-info > * {
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     text-align: center;
 }
 
@@ -240,10 +249,41 @@ input::placeholder {
     vertical-align: middle;
     position: relative;
     bottom: .1rem;
+    filter: var(--game-info-filter);
+}
+
+.tooltip {
+    visibility: hidden;
+    position: absolute;
+    color: var(--tooltip-color);
+    background: var(--tooltip-bg);
+    z-index: 5;
+    width: 100%;
+    height: 1rem;
+    border-radius: .25rem;
+    bottom: 2.3rem;
+    left: -.8rem;
+    padding: .5rem .3rem;
+}
+
+.tooltip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -.3rem;
+    border-width: .6rem;
+    border-style: solid;
+    border-color: var(--tooltip-bg) transparent transparent transparent;
 }
 
 .game-info-details {
     position: relative;
+}
+
+.game-info-details:hover .tooltip {
+    visibility: visible;
+    cursor: pointer;
 }
 
 .game-info-details li {
