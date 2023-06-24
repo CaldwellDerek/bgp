@@ -1,12 +1,12 @@
 :root {
-    --bg-color: #FFF;
+    --bg-color: #5389A5;
     --header-color: #FFF;
     --header-overlay-color: #223843;
     --text-color: #EFF1F3;
-    --button-text-color: #223843;
+    --button-text-color: #000;
     --button-bg-color: #DBD3D8;
     --button-hover-color: red;
-    --button-border-color: #EFF1F3;
+    --button-border-color: #DBD3D8;
     --link-hover-color: #5A5A5A;
     --footer-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(313deg) brightness(109%) contrast(101%);
     --footer-filter-hover: invert(36%) sepia(0%) saturate(0%) hue-rotate(183deg) brightness(92%) contrast(85%);
@@ -15,6 +15,7 @@
 
 html {
     font-size: 16px;
+    background: var(--bg-color);
 }
 
 span {
@@ -123,3 +124,49 @@ header .btn,
     filter: invert(36%) sepia(0%) saturate(1591%) hue-rotate(153deg) brightness(92%) contrast(87%);
 }
 
+/* Game Content ------------------------------------------------------------------------------------ */
+
+.game-content {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.game-image {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.game-info {
+    grid-column-start: 3;
+    grid-column-end: 7;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Footer --------------------------------------------------------------------------------------------- */
+
+footer {
+    min-height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-nav {
+    display: flex;
+    align-items: center;
+}
+
+.github-logo {
+    height: 2rem;
+    width: 2rem;
+}
+
+.linkedin-logo {
+    height: 2.125rem;
+    width: 2.125rem;
+}
