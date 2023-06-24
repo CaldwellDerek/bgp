@@ -35,12 +35,16 @@ body {
     height: 100%;
     display: grid;
     grid-template-rows: 22rem auto auto 5rem;
-    grid-template-columns: 5% 90% 5%;
+    grid-template-columns: 8% 84% 8%;
     row-gap: 6rem;
 }
 
 span {
     font-weight: bold;
+}
+
+a {
+    line-height: 1.18;
 }
 
 p,
@@ -259,11 +263,11 @@ input::placeholder {
     color: var(--tooltip-color);
     background: var(--tooltip-bg);
     z-index: 5;
-    width: 100%;
+    width: 120%;
     height: 1rem;
     border-radius: .25rem;
     bottom: 2.3rem;
-    left: -.8rem;
+    left: -2rem;
     padding: .5rem .3rem;
 }
 
@@ -415,6 +419,14 @@ footer {
 }
 
 @media screen and (max-width: 30rem){
+    body {
+        grid-template-columns: 5% 90% 5%;
+    }
+
+    .game-info {
+        padding: 1rem;
+    }
+
     .game-info-buttons {
         flex-direction: column;
     }
