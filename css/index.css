@@ -1,11 +1,11 @@
 :root {
     --bg-color: #BB9457;
-    --text-color: #000;
-    --h-color: #432818;
+    --text-color: #301D11;
+    --h-color: #6F1D1B;
     --site-title-color: #FFE6A7;
     --header-overlay-color: #432818;
     --search-bg: #FFE6A7;
-    --search-text: #000;
+    --search-text: #301D11;
     --header-button-text: #6F1D1B;
     --header-button-bg: #FFE6A7;
     --header-button-border: #FFE6A7;
@@ -16,8 +16,8 @@
     --button-hover-color: #432818;
     --image-border: #6F1D1B;
     --similar-game-border: #432818;
-    --footer-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(313deg) brightness(109%) contrast(101%);
-    --footer-filter-hover: invert(36%) sepia(0%) saturate(0%) hue-rotate(183deg) brightness(92%) contrast(85%);
+    --filter: invert(15%) sepia(32%) saturate(3852%) hue-rotate(339deg) brightness(95%) contrast(96%);
+    --filter-hover: invert(10%) sepia(10%) saturate(3328%) hue-rotate(339deg) brightness(98%) contrast(93%);
     font-size: 16px;
 }
 
@@ -40,6 +40,12 @@ span {
     font-weight: bold;
 }
 
+p,
+button,
+a {
+    font-family: 'Fira Sans', sans-serif;
+}
+
 h1,
 h2,
 h3,
@@ -49,6 +55,8 @@ h6 {
     font-size: 3rem;
     font-weight: bold;
     color: var(--h-color);
+    font-family: 'Luckiest Guy', sans-serif;
+    letter-spacing: 0.15rem;
 }
 
 .btn{
@@ -60,6 +68,7 @@ h6 {
     font-weight: bold;
     text-decoration: none;
     transition: background .5s, border-color .5s;
+    font-size: 1rem;
 }
 
 .btn:hover {
@@ -81,7 +90,6 @@ header {
     justify-content: center;
     align-items: center;
     position: relative;
-    /* offset-x | offset-y | blur-radius | spread-radius | color */
     box-shadow: 0 0.1rem 0.5rem 0.2rem var(--header-overlay-color);
 }
 
@@ -111,6 +119,8 @@ input::placeholder {
     font-weight: bold;
     margin-bottom: 2rem;
     color: var(--site-title-color);
+    font-family: 'Luckiest Guy', sans-serif;
+    letter-spacing: 0.3rem;
 }
 
 .game-search {
@@ -127,7 +137,7 @@ input::placeholder {
     outline: none;
     font-size: 1rem;
     background: var(--search-bg);
-    color: #000;
+    color: var(--search-text);
 }
 
 .search-btn {
@@ -143,11 +153,13 @@ input::placeholder {
 
 .search-btn img {
     max-height: 1.5rem;
-    max-width: 1.5rem
+    max-width: 1.5rem;
+    filter: var(--filter);
+    transition: filter .5s;
 }
 
 .search-btn img:hover {
-    filter: invert(36%) sepia(0%) saturate(1591%) hue-rotate(153deg) brightness(92%) contrast(87%);
+    filter: var(--filter-hover);
 }
 
 #header-btn {
@@ -313,4 +325,15 @@ footer {
 .linkedin-logo {
     height: 2.125rem;
     width: 2.125rem;
+}
+
+.github-logo,
+.linkedin-logo {
+    filter: var(--filter);
+    transition: filter .5s;
+}
+
+.github-logo:hover,
+.linkedin-logo:hover {
+    filter: var(--filter-hover);
 }
