@@ -1,12 +1,18 @@
 :root {
-    --bg-color: #5389A5;
-    --header-color: #FFF;
-    --header-overlay-color: #223843;
-    --text-color: #EFF1F3;
-    --button-text-color: #000;
-    --button-bg-color: #DBD3D8;
+    --bg-color: #FFE6A7;
+    --text-color: #000;
+    --h-color: #432818;
+    --header-overlay-color: #432818;
+    --site-title-color: #FFE6A7;
+    --search-bg: #FFE6A7;
+    --search-text: #000;
+    --header-button-text: #432818;
+    --header-button-bg: #99582A;
+    --header-button-border: #99582A;
+    --button-text-color: #432818;
+    --button-bg-color: #99582A;
+    --button-border-color: #99582A;
     --button-hover-color: red;
-    --button-border-color: #DBD3D8;
     --link-hover-color: #5A5A5A;
     --footer-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(313deg) brightness(109%) contrast(101%);
     --footer-filter-hover: invert(36%) sepia(0%) saturate(0%) hue-rotate(183deg) brightness(92%) contrast(85%);
@@ -16,7 +22,8 @@
 html {
     font-size: 16px;
     background: var(--bg-color);
-    color: var(--text-color)
+    color: var(--text-color);
+    z-index: 0;
 }
 
 body {
@@ -38,26 +45,31 @@ h4,
 h5,
 h6 {
     font-size: 3rem;
-    color: var(--header-color);
+    font-weight: bold;
+    color: var(--h-color);
 }
 
-.external-link{
-    text-decoration: none;
-}
 
-.btn,
-.external-link {
+
+.btn{
     padding: 0.6rem;
     border-radius: 0.25rem;
     border: 0.2rem solid var(--button-border-color);
     background: var(--button-bg-color);
     color: var(--button-text-color);
     font-weight: bold;
+    box-shadow: 0rem 0rem 0.1rem 0.1rem #99582A;
+    text-decoration: none;
 }
 
-.btn:hover,
-.external-link:hover {
+.btn:hover {
     cursor: pointer;
+}
+
+#header-btn {
+    border-color: var(--header-button-border);
+    background: var(--header-button-bg);
+    color: var(--header-button-text);
 }
 
 
@@ -68,7 +80,6 @@ header {
     grid-column: 1 / span 3;
     background-image: url(../images/header-bg.jpg);
     background-size: cover;
-    background-repeat: no-repeat;
     color: var(--text-color);
     display: flex;
     flex-direction: column;
@@ -77,22 +88,14 @@ header {
     position: relative;
 }
 
-
-header p {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 2rem;
+input::placeholder {
+    opacity: 1;
+    color: var(--search-text);
 }
 
-header .btn{
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-}
-
-header p,
-header .btn,
-.game-search {
+.site-title,
+.game-search,
+#header-btn {
     z-index: 10;
 }
 
@@ -105,6 +108,12 @@ header .btn,
     bottom: 0;
     background: var(--header-overlay-color);
     opacity: 0.8;
+}
+
+.site-title {
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--site-title-color);
 }
 
 .game-search {
@@ -120,13 +129,15 @@ header .btn,
     border-bottom-left-radius: 0.5rem;
     outline: none;
     font-size: 1rem;
+    background: var(--search-bg);
+    color: #000;
 }
 
 .search-btn {
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    border: 0.15rem solid white;
-    background: #FFF;
+    border: 0.15rem solid var(--search-bg);
+    background: var(--search-bg);
 }
 
 .search-btn:hover {
@@ -142,6 +153,12 @@ header .btn,
     filter: invert(36%) sepia(0%) saturate(1591%) hue-rotate(153deg) brightness(92%) contrast(87%);
 }
 
+#header-btn{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+}
+
 /* Game Content ------------------------------------------------------------------------------------ */
 
 .game-content {
@@ -149,6 +166,7 @@ header .btn,
     grid-column: 2;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
+    
 }
 
 .game-image {
