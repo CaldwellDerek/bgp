@@ -21,7 +21,7 @@
     --filter: invert(15%) sepia(32%) saturate(3852%) hue-rotate(339deg) brightness(95%) contrast(96%);
     --filter-hover: invert(10%) sepia(10%) saturate(3328%) hue-rotate(339deg) brightness(98%) contrast(93%);
     --game-info-filter: invert(8%) sepia(10%) saturate(6232%) hue-rotate(350deg) brightness(92%) contrast(89%);
-    font-size: 16px;
+    
 }
 
 html {
@@ -48,6 +48,7 @@ button,
 a,
 .tooltip {
     font-family: 'Fira Sans', sans-serif;
+    font-size: 1.1rem;
 }
 
 h1,
@@ -72,7 +73,7 @@ h6 {
     font-weight: bold;
     text-decoration: none;
     transition: background .5s, border-color .5s;
-    font-size: 1rem;
+    font-size: 1.1rem;
 }
 
 .btn:hover {
@@ -129,7 +130,7 @@ input::placeholder {
 }
 
 .game-search {
-    width: 40%;
+    width: 50%;
     display: flex;
 }
 
@@ -140,7 +141,7 @@ input::placeholder {
     border-top-left-radius: 0.5rem;
     border-bottom-left-radius: 0.5rem;
     outline: none;
-    font-size: 1rem;
+    font-size: 1.1rem;
     background: var(--search-bg);
     color: var(--search-text);
 }
@@ -381,5 +382,44 @@ footer {
 @media screen and (min-width: 120.1rem) {
     body {
         grid-template-columns: 23% 54% 23%;
+    }
+}
+
+@media screen and (max-width: 62.4rem){
+    .game-content {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+    
+    .game-image {
+        grid-column: 1 / span 1;
+        grid-row: 1 / span 1;
+    }
+    
+    
+    .game-info {
+        grid-column: 1 / span 1;
+        grid-row: 2 / span 1;
+    }
+
+    .game-search {
+        width: 80%;
+    }
+
+    #header-btn {
+        position: relative;
+        top: 2rem;
+        right: 0;
+    }
+    
+}
+
+@media screen and (max-width: 30rem){
+    .game-info-buttons {
+        flex-direction: column;
+    }
+
+    .game-info-buttons > * {
+        margin-bottom: 1rem;
     }
 }
