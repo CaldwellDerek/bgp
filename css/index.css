@@ -13,7 +13,7 @@
     --button-text-color: #FFE6A7;
     --button-bg-color: #6F1D1B;
     --button-border-color: #6F1D1B;
-    --button-hover-color: red;
+    --button-hover-color: #432818;
     --image-border: #6F1D1B;
     --similar-game-border: #432818;
     --footer-filter: invert(100%) sepia(100%) saturate(0%) hue-rotate(313deg) brightness(109%) contrast(101%);
@@ -51,8 +51,6 @@ h6 {
     color: var(--h-color);
 }
 
-
-
 .btn{
     padding: 0.6rem;
     border-radius: 0.25rem;
@@ -61,24 +59,13 @@ h6 {
     color: var(--button-text-color);
     font-weight: bold;
     text-decoration: none;
-    
+    transition: background .5s, border-color .5s;
 }
 
 .btn:hover {
     cursor: pointer;
-}
-
-#header-btn {
-    border-color: var(--header-button-border);
-    background: var(--header-button-bg);
-    color: var(--header-button-text);
-    transition: background .5s, border-color .5s, padding .5s;
-}
-
-#header-btn:hover {
-    background: var(--header-button-hover);
-    border-color: var(--header-button-hover);
-    padding: 1rem;
+    background: var(--button-hover-color);
+    border-color: var(--button-hover-color);
 }
 
 /* header -------------------------------------------------------------------- */
@@ -163,10 +150,20 @@ input::placeholder {
     filter: invert(36%) sepia(0%) saturate(1591%) hue-rotate(153deg) brightness(92%) contrast(87%);
 }
 
-#header-btn{
+#header-btn {
     position: absolute;
     top: 2rem;
     right: 2rem;
+    border-color: var(--header-button-border);
+    background: var(--header-button-bg);
+    color: var(--header-button-text);
+    transition: background .5s, border-color .5s, padding .5s;
+}
+
+#header-btn:hover {
+    background: var(--header-button-hover);
+    border-color: var(--header-button-hover);
+    padding: 1rem;
 }
 
 /* Game Content ------------------------------------------------------------------------------------ */
@@ -176,20 +173,36 @@ input::placeholder {
     grid-column: 2;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
-    
+    grid-template-rows: 10% 80% 10%;
 }
 
 .game-image {
     grid-column-start: 1;
     grid-column-end: 3;
+    grid-row: 2;
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.game-image-overlay{
+    position: absolute;
+    z-index: 5;
+    background: var(--header-overlay-color);
+    bottom: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    opacity: 0.5;
 }
 
 .game-image img {
-    max-width: 100%;
-    max-height: 100%;
+    position: relative;
+    width: 100%;
+    height: 100%;
     border-radius: 0.25rem;
     border: 0.35rem solid var(--image-border);
 }
@@ -197,6 +210,7 @@ input::placeholder {
 .game-info {
     grid-column-start: 3;
     grid-column-end: 7;
+    grid-row: 1 / span 3;
     display: flex;
     flex-direction: column;
     align-items: center;
