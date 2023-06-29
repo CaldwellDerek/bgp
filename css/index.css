@@ -51,7 +51,7 @@ html {
 body {
     height: 100%;
     display: grid;
-    grid-template-rows: 22rem auto auto 5rem;
+    grid-template-rows: 22rem auto auto auto 5rem;
     grid-template-columns: 8% 84% 8%;
     row-gap: 6rem;
 }
@@ -200,7 +200,6 @@ input::placeholder {
 }
 
 #header-btn:hover {
-    /* background: var(--header-button-hover); */
     border-color: var(--header-button-hover);
     padding: 1rem;
 }
@@ -227,15 +226,25 @@ input::placeholder {
 }
 
 #advanced-search:hover {
-    /* background: var(--header-button-hover); */
     border-color: var(--header-button-hover);
     padding: 1rem;
 }
 
+/* Advanced Search Section ---------------------------------------------- */
+.advanced-search-container {
+    grid-row: 2;
+    grid-column: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+
 /* Game Content ------------------------------------------------------------------------------------ */
 
 .game-content {
-    grid-row: 2;
+    grid-row: 3;
     grid-column: 2;
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -354,7 +363,7 @@ input::placeholder {
 /* Similar Games -------------------------------------------------------------------------------------- */
 
 .similar-games-list {
-    grid-row: 3;
+    grid-row: 4;
     grid-column: 2;
     text-align: center;
 }
@@ -406,7 +415,7 @@ input::placeholder {
 /* Footer --------------------------------------------------------------------------------------------- */
 
 footer {
-    grid-row: 4;
+    grid-row: 5;
     grid-column: 1 / span 3;
     display: flex;
     justify-content: center;
