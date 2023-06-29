@@ -25,7 +25,7 @@
 }
 
 ::-webkit-scrollbar {
-	width: 0.5rem;
+	width: 0.6rem;
 }
 
 ::-webkit-scrollbar-track {
@@ -37,7 +37,7 @@
 ::-webkit-scrollbar-thumb {
 	background: var(--image-border);
 	border-radius: 100vw;
-	border: 0.1rem solid var(--bg-color);
+	/* border: 0.1rem solid var(--bg-color); */
 }
 
 
@@ -200,7 +200,34 @@ input::placeholder {
 }
 
 #header-btn:hover {
-    background: var(--header-button-hover);
+    /* background: var(--header-button-hover); */
+    border-color: var(--header-button-hover);
+    padding: 1rem;
+}
+
+#advanced-search {
+    position: relative;
+    margin-top: 1rem;
+    border-color: var(--header-button-border);
+    background: var(--header-button-bg);
+    color: var(--header-button-text);
+    transition: background .5s, border-color .5s, padding .5s;
+    z-index: 10;
+}
+
+#advanced-search::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 48%;
+    margin-left: -.3rem;
+    border-width: .8rem;
+    border-style: solid;
+    border-color: var(--header-button-bg) transparent transparent transparent;
+}
+
+#advanced-search:hover {
+    /* background: var(--header-button-hover); */
     border-color: var(--header-button-hover);
     padding: 1rem;
 }
@@ -441,8 +468,9 @@ footer {
 
     #header-btn {
         position: relative;
-        top: 2rem;
+        top: 0;
         right: 0;
+        margin-top: 1rem;
     }
 
     .similar-game {
