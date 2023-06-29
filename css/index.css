@@ -24,6 +24,23 @@
     
 }
 
+::-webkit-scrollbar {
+	width: 0.5rem;
+}
+
+::-webkit-scrollbar-track {
+	background: var(--bg-color);
+	border-radius: 100vw;
+	margin-block: 0.1rem;
+}
+
+::-webkit-scrollbar-thumb {
+	background: var(--image-border);
+	border-radius: 100vw;
+	border: 0.1rem solid var(--bg-color);
+}
+
+
 html {
     font-size: 16px;
     background: var(--bg-color);
