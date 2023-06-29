@@ -232,7 +232,7 @@ input::placeholder {
 
 /* Advanced Search Section ---------------------------------------------- */
 .advanced-search-div {
-    /* display: none; */
+    display: none;
     grid-row: 2;
     grid-column: 1 / span 3 ;
     background-color: var(--header-overlay-color);

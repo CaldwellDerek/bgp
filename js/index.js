@@ -1,20 +1,18 @@
-const modalOptions = {
-    startingTop: "5%",
-    endingTop: "5%",
-    opacity: 0.7
-};
+document.querySelector("#advanced-search").addEventListener("click", (event)=> {
+  event.preventDefault();
+  const advancedSearch = document.querySelector(".advanced-search-div");
 
-const collapsibleOptions = {
-    accordion: false
-};
+  if (advancedSearch.style.display != "block"){
+    advancedSearch.style.display = "block";
+  } else {
+    advancedSearch.style.display = "none";
+  }
 
-document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelectorAll('.modal');
-    var instances = M.Modal.init(elems, modalOptions);
-  });
+});
 
+document.querySelector(".close-search").addEventListener("click", (event) => {
+  event.preventDefault();
+  document.querySelector(".advanced-search-div").style.display = "none";
 
-  document.addEventListener('DOMContentLoaded', function() {
-    var elems = document.querySelector('.collapsible');
-    var instances = M.Collapsible.init(elems, collapsibleOptions);
-  });
+  
+})
