@@ -32,17 +32,19 @@
         <button id="header-btn" class="btn" type="button">VIEW SAVED GAMES</button>
         <button type="button" id="advanced-search" class="btn">ADVANCED SEARCH</button>
     </header>
-    <div class="advanced-search-container">
-      <form class="advanced-search-form">
-        <input class="search-bar advanced-search" type="text" placeholder="Publisher">
-        <input class="search-bar advanced-search" type="text" placeholder="Year Published">
-        <input class="search-bar advanced-search" type="text" placeholder="Number of Players">
-        <input class="search-bar advanced-search" type="text" placeholder="Age Group">
-        <input class="search-bar advanced-search" type="text" placeholder="Playtime (minutes)">
-      </form>
-      <div class="advanced-search-buttons">
-        <button type="button" class="btn">CANCEL</button>
-        <button type="button" class="btn">SEARCH</button>
+    <div class="advanced-search-div">
+      <div class="advanced-search-container">
+        <form class="advanced-search-form">
+          <input class="search-bar advanced-search" type="text" placeholder="Publisher">
+          <input class="search-bar advanced-search" type="number" min="1900" max="2023" placeholder="Year Published">
+          <input class="search-bar advanced-search" type="number" min="2" placeholder="Number of Players">
+          <input class="search-bar advanced-search" type="number" min="0" placeholder="Age Group">
+          <input class="search-bar advanced-search" type="number" min="0" placeholder="Playtime (minutes)">
+        </form>
+        <div class="advanced-search-buttons">
+          <button type="button" class="btn">CANCEL</button>
+          <button type="button" class="btn">SEARCH</button>
+        </div>
       </div>
     </div>
     <div class="game-content">
