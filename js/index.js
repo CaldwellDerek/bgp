@@ -1,10 +1,33 @@
 const CLIENTID1 = "dgPmhIgzGb"
 
+// Uses parameters to update DOM with values
+const updateGameInfo = (src, title, numPlayers, playtime, ages, publisher, yearPublished, description) => {
+  document.querySelector("#main-game-image").src = src;
+  document.querySelector("#main-game-title").innerHTML = title;
+  document.querySelector("#main-game-players").innerHTML = `<img src="./images/number-of-players.png" alt="number of players">${numPlayers}`;
+  document.querySelector("#main-game-time").innerHTML = `<img src="./images/play-time.png" alt="play time">${playtime}`;
+  document.querySelector("#main-game-ages").innerHTML = `<img src="./images/age-group.png" alt="age group">${playtime}`;
+  document.querySelector("#main-game-publisher").innerHTML = publisher;
+  document.querySelector("#main-game-year").innerHTML = yearPublished;
+  document.querySelector("#main-game-description").innerHTML = description;
+}
+
 // Queries the API
 const bgaSearch = async (url) => {
   const response = await fetch(url)
   const jsonData = await response.json();
   console.log(jsonData);
+  
+  updateGameInfo(
+    jsonData.games[0].images.large,
+    jsonData.games[0].name,
+    jsonData.games[0].players,
+    jsonData.games[0].playtime,
+    `${jsonData.games[0].min_age}+`,
+    jsonData.games[0].primary_publisher.name,
+    jsonData.games[0].year_published,
+    jsonData.games[0].description_preview
+  );
 }
 
 // Retrieves all values from input fields and returns an API url
