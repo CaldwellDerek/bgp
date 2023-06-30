@@ -37,7 +37,6 @@
 ::-webkit-scrollbar-thumb {
 	background: var(--image-border);
 	border-radius: 100vw;
-	/* border: 0.1rem solid var(--bg-color); */
 }
 
 
@@ -51,9 +50,38 @@ html {
 body {
     height: 100%;
     display: grid;
-    grid-template-rows: 22rem auto auto auto 5rem;
+    grid-template-rows: 22rem 0rem auto auto 5rem;
     grid-template-columns: 8% 84% 8%;
-    /* row-gap: 6rem; */
+}
+
+@keyframes slidedown {
+    from {
+        grid-template-rows: 22rem 0rem auto auto 5rem;
+    }
+
+    to {
+        grid-template-rows: 22rem 26rem auto auto 5rem;
+    }
+}
+
+@keyframes slideup {
+    from {
+        grid-template-rows: 22rem 26rem auto auto 5rem;
+    }
+
+    to {
+        grid-template-rows: 22rem 0rem auto auto 5rem;
+    }
+}
+
+.slidedown {
+    animation: slidedown 1s ;
+}
+
+.slideup {
+    animation-name: slideup;
+    animation-duration: 1s;
+    animation-delay: 2000ms;
 }
 
 span {
@@ -126,7 +154,8 @@ input::placeholder {
 
 .site-title,
 .game-search,
-#header-btn {
+#header-btn,
+#advanced-search {
     z-index: 10;
 }
 
@@ -211,7 +240,6 @@ input::placeholder {
     background: var(--header-button-bg);
     color: var(--header-button-text);
     transition: background .5s, border-color .5s, padding .5s;
-    z-index: 10;
 }
 
 #advanced-search::after {
@@ -231,19 +259,56 @@ input::placeholder {
 }
 
 /* Advanced Search Section ---------------------------------------------- */
+
+
 .advanced-search-div {
-    display: none;
     grid-row: 2;
     grid-column: 1 / span 3 ;
     background-color: var(--header-overlay-color);
-    margin-bottom: 5rem;
 }
 
 .advanced-search-container {
+    visibility: hidden;
+    opacity: 0;
     display: grid;
     grid-template-rows: 20rem 3rem;
     padding: 1rem;
+    height: 100%;
 }
+
+@keyframes appear {
+    from {
+        visibility: hidden;
+        opacity: 0;
+    }
+
+    to {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+
+@keyframes disappear {
+    from {
+        visibility: visible;
+        opacity: 1;
+    }
+
+    to {
+        visibility: hidden;
+        opacity: 0;
+    }
+}
+
+.appear{
+    animation: appear 300ms;
+    animation-delay: 1s;
+}
+
+.disappear {
+    animation: disappear 300ms;
+}
+
 
 .advanced-search-form {
     grid-row: 1;
@@ -281,6 +346,7 @@ input::placeholder {
     border-color: var(--header-button-hover);
 }
 
+
 /* Game Content ------------------------------------------------------------------------------------ */
 
 .game-content {
@@ -289,6 +355,7 @@ input::placeholder {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     grid-template-rows: 10% 80% 10%;
+    margin-top: 2rem;
 }
 
 .game-image {
