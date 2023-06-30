@@ -45,3 +45,8 @@ document.querySelector("#advanced-search").addEventListener("click", () => {
     hideAdvSearch();
   }
 });
+
+// "Cancel" button hides closes advanced search options
+document.querySelector(".close-search").addEventListener("click", () => {
+  hideAdvSearch();
+})
