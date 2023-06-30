@@ -1,77 +1,47 @@
-// Activates and Closes advanced search options 
-function removeSlidedown() {
+// Removes slide down animation on advanced search bar
+const rmvSD = () => {
   document.querySelector("body").classList.remove("slidedown");
   document.querySelector("body").style.gridTemplateRows = "22rem 26rem auto auto 5rem"
   document.querySelector(".advanced-search-container").style.opacity = "1";
   document.querySelector(".advanced-search-container").style.visibility = "visible";
 }
 
-function removeSlideup() {
+// Removes slide up animation on advanced search bar
+const rmvSU = () => {
   document.querySelector("body").classList.remove("slideup");
   document.querySelector("body").style.gridTemplateRows = "22rem 0rem auto auto 5rem"
-  removeStyle();
+  rmvAdvStyle();
 }
 
-function removeStyle() {
+// Removes styling on advanced search container
+const rmvAdvStyle = () => {
   document.querySelector(".advanced-search-container").style.opacity = "0";
   document.querySelector(".advanced-search-container").style.visibility = "hidden";
 }
 
+// Runs animation to show advanced search bar
+const showAdvSearch = () => {
+  document.querySelector(".advanced-search-container").style.display = "grid";
+  document.querySelector("body").classList.add("slidedown");
+  document.querySelector("body").addEventListener("animationend", () => rmvSD());
+  document.querySelector("body").setAttribute("data-trigger", "up");
+}
+
+// Runs animation to close advanced search bar
+const hideAdvSearch = () => {
+  document.querySelector("body").classList.add("slideup");
+  document.querySelector("body").addEventListener("animationstart", () => rmvAdvStyle());
+  document.querySelector("body").addEventListener("animationend", () => rmvSU());
+  document.querySelector("body").setAttribute("data-trigger", "down");
+  document.querySelector(".advanced-search-container").style.display = "none";
+}
+
+
+// "Advanced Search" button shows / closes advanced search options 
 document.querySelector("#advanced-search").addEventListener("click", () => {
-  // const body = document.querySelector("body");
-  // const advSearchContainer = document.querySelector(".advanced-search-container");
-
-  // function removeSlidedown() {
-  //   body.classList.remove("slidedown");
-  //   body.style.gridTemplateRows = "22rem 26rem auto auto 5rem"
-  //   advSearchContainer.style.opacity = "1";
-  //   advSearchContainer.style.visibility = "visible";
-  // }
-
-  // function removeSlideup() {
-  //   body.classList.remove("slideup");
-  //   body.style.gridTemplateRows = "22rem 0rem auto auto 5rem"
-  //   removeStyle();
-  // }
-
-  // function removeStyle() {
-  //   advSearchContainer.style.opacity = "0";
-  //   advSearchContainer.style.visibility = "hidden";
-  // }
-
   if (document.querySelector("body").getAttribute("data-trigger") == "down"){
-     document.querySelector(".advanced-search-container").style.display = "grid";
-    document.querySelector("body").classList.add("slidedown");
-    document.querySelector("body").addEventListener("animationend", removeSlidedown);
-    document.querySelector("body").setAttribute("data-trigger", "up");
+    showAdvSearch();
   } else {
-    document.querySelector("body").classList.add("slideup");
-    document.querySelector("body").addEventListener("animationstart", removeStyle);
-    document.querySelector("body").addEventListener("animationend", removeSlideup);
-    document.querySelector("body").setAttribute("data-trigger", "down");
-    document.querySelector(".advanced-search-container").style.display = "none";
+    hideAdvSearch();
   }
-
 });
-
-document.querySelector(".close-search").addEventListener("click", ()=> {
-  const body = document.querySelector("body");
-  const advSearchContainer = document.querySelector(".advanced-search-container");
-
-  // function removeSlideup() {
-  //   body.classList.remove("slideup");
-  //   body.style.gridTemplateRows = "22rem 0rem auto auto 5rem"
-  //   removeStyle();
-  // }
-
-  // function removeStyle() {
-  //   advSearchContainer.style.opacity = "0";
-  //   advSearchContainer.style.visibility = "hidden";
-  // }
-
-  body.classList.add("slideup");
-  body.addEventListener("animationstart", removeStyle);
-  body.addEventListener("animationend", removeSlideup);
-  body.setAttribute("data-trigger", "down");
-  advSearchContainer.style.display = "none";
-})
