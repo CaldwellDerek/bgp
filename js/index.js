@@ -1,3 +1,18 @@
+const CLIENTID1 = "dgPmhIgzGb"
+
+const bgaSearch = async () => {
+  const response = await fetch("https://api.boardgameatlas.com/api/search?name=Catan&limit=1&client_id=dgPmhIgzGb")
+  const jsonData = await response.json();
+  console.log(jsonData);
+}
+
+for(let button of document.querySelectorAll(".search-btn")){
+  button.addEventListener("click", () => {
+    bgaSearch();
+  })
+}
+
+
 // Removes slide down animation on advanced search bar
 const rmvSD = () => {
   document.querySelector("body").classList.remove("slidedown");
@@ -44,7 +59,6 @@ const rmvIVals = () => {
   }
 }
 
-
 // "Advanced Search" button shows / closes advanced search options 
 document.querySelector("#advanced-search").addEventListener("click", () => {
   if (document.querySelector("body").getAttribute("data-trigger") == "down"){
@@ -54,7 +68,8 @@ document.querySelector("#advanced-search").addEventListener("click", () => {
   }
 });
 
-// "Cancel" button hides closes advanced search options
+// "Cancel" button closes advanced search options
 document.querySelector(".close-search").addEventListener("click", () => {
   hideAdvSearch();
 })
+

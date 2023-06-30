@@ -304,6 +304,7 @@ input::placeholder {
     border-color: var(--header-button-border);
     min-width: 10%;
     margin-left: 1rem;
+    border-radius: 0.5rem;
 }
 
 .advanced-search-buttons button:hover {
