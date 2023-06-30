@@ -1,17 +1,21 @@
 const CLIENTID1 = "dgPmhIgzGb"
 
-const bgaSearch = async () => {
-  const response = await fetch("https://api.boardgameatlas.com/api/search?name=Catan&limit=1&client_id=dgPmhIgzGb")
+// Queries the API
+const bgaSearch = async (url) => {
+  const response = await fetch(url)
   const jsonData = await response.json();
   console.log(jsonData);
 }
 
-for(let button of document.querySelectorAll(".search-btn")){
-  button.addEventListener("click", () => {
-    bgaSearch();
-  })
+// Retrieves all values from input fields and returns an API url
+const getInputVals = () => {
+  const searchParams = [];
+  for (let input of document.querySelectorAll("input")){
+    searchParams.push(input.value);
+  }
+  const apiURL = `https://api.boardgameatlas.com/api/search?limit=1&name=${searchParams[0]}&publisher=${searchParams[1]}&year_published=${searchParams[2]}&min_players=${searchParams[3]}&min_age=${searchParams[4]}&min_playtime=${searchParams[5]}&client_id=${CLIENTID1}`
+  return apiURL;
 }
-
 
 // Removes slide down animation on advanced search bar
 const rmvSD = () => {
@@ -73,3 +77,9 @@ document.querySelector(".close-search").addEventListener("click", () => {
   hideAdvSearch();
 })
 
+// Adds event listener to both search buttons and queries the API
+for(let button of document.querySelectorAll(".search-btn")){
+  button.addEventListener("click", () => {
+    bgaSearch(getInputVals());
+  })
+}
