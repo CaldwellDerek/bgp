@@ -6,7 +6,7 @@ const updateGameInfo = (src, title, numPlayers, playtime, ages, publisher, yearP
   document.querySelector("#main-game-title").innerHTML = title;
   document.querySelector("#main-game-players").innerHTML = `<img src="./images/number-of-players.png" alt="number of players">${numPlayers}`;
   document.querySelector("#main-game-time").innerHTML = `<img src="./images/play-time.png" alt="play time">${playtime}`;
-  document.querySelector("#main-game-ages").innerHTML = `<img src="./images/age-group.png" alt="age group">${playtime}`;
+  document.querySelector("#main-game-ages").innerHTML = `<img src="./images/age-group.png" alt="age group">${ages}`;
   document.querySelector("#main-game-publisher").innerHTML = publisher;
   document.querySelector("#main-game-year").innerHTML = yearPublished;
   document.querySelector("#main-game-description").innerHTML = description;
@@ -17,7 +17,7 @@ const bgaSearch = async (url) => {
   const response = await fetch(url)
   const jsonData = await response.json();
   console.log(jsonData);
-  
+
   updateGameInfo(
     jsonData.games[0].images.large,
     jsonData.games[0].name,

@@ -200,21 +200,13 @@ input::placeholder {
     border-bottom-right-radius: 0.5rem;
     border: 0.15rem solid var(--search-bg);
     background: var(--search-bg);
+    transition: background 400ms, border-color 400ms;
 }
 
 .search-btn:hover {
     cursor: pointer;
-}
-
-.search-btn img {
-    max-height: 1.5rem;
-    max-width: 1.5rem;
-    filter: var(--filter);
-    transition: filter .5s;
-}
-
-.search-btn img:hover {
-    filter: var(--filter-hover);
+    background: var(--bg-color);
+    border-color: var(--bg-color);
 }
 
 #header-btn {
@@ -234,7 +226,7 @@ input::placeholder {
 
 #advanced-search {
     position: absolute;
-    bottom: 0.2rem;
+    bottom: -0.2rem;
     border-color: var(--header-button-border);
     background: var(--header-button-bg);
     color: var(--header-button-text);
@@ -245,7 +237,7 @@ input::placeholder {
     content: "";
     position: absolute;
     top: 100%;
-    left: 48%;
+    left: 42%;
     margin-left: -.3rem;
     border-width: .8rem;
     border-style: solid;
