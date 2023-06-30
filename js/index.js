@@ -27,13 +27,21 @@ const showAdvSearch = () => {
   document.querySelector("body").setAttribute("data-trigger", "up");
 }
 
-// Runs animation to close advanced search bar
+// Runs animation to close advanced search bar, removes values from input fields
 const hideAdvSearch = () => {
   document.querySelector("body").classList.add("slideup");
   document.querySelector("body").addEventListener("animationstart", () => rmvAdvStyle());
   document.querySelector("body").addEventListener("animationend", () => rmvSU());
   document.querySelector("body").setAttribute("data-trigger", "down");
   document.querySelector(".advanced-search-container").style.display = "none";
+  rmvIVals();
+}
+
+// Removes values from adv search input fields
+const rmvIVals = () => {
+  for (let input of document.getElementsByClassName("advanced-search")){
+    input.value = "";
+  }
 }
 
 

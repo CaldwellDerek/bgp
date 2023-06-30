@@ -233,8 +233,8 @@ input::placeholder {
 }
 
 #advanced-search {
-    position: relative;
-    margin-top: 1rem;
+    position: absolute;
+    bottom: 0.2rem;
     border-color: var(--header-button-border);
     background: var(--header-button-bg);
     color: var(--header-button-text);
