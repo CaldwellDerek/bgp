@@ -1,5 +1,45 @@
 const CLIENTID1 = "dgPmhIgzGb"
 
+// Displays random game on page load
+window.addEventListener("DOMContentLoaded", async () => {
+  await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
+  setTimeout(()=>{
+    document.querySelector(".page-load").style.display = "none";
+  }, 500)
+  
+});
+
+
+// Queries the API and updates DOM with main and similar game info
+const bgaSearch = async (url) => {
+  const response = await fetch(url)
+  const jsonData = await response.json();
+  console.log(jsonData);
+  updateGameInfo(
+    jsonData.games[0].images.large,
+    jsonData.games[0].name,
+    jsonData.games[0].players,
+    jsonData.games[0].playtime,
+    `${jsonData.games[0].min_age}+`,
+    jsonData.games[0].primary_publisher.name,
+    jsonData.games[0].year_published,
+    jsonData.games[0].description_preview
+  );
+  for (let index = 1; index < jsonData.games.length; index++){
+    const gameInfo = createSimGame(
+      jsonData.games[index].images.large,
+      jsonData.games[index].name,
+      jsonData.games[index].description_preview
+    );
+
+    let game = document.createElement('div');
+    game.classList.add("similar-game");
+    game.innerHTML = gameInfo;
+
+    document.querySelector(".similar-games-list").append(game);
+  }
+}
+
 // Uses parameters to update DOM with values
 const updateGameInfo = (src, title, numPlayers, playtime, ages, publisher, yearPublished, description) => {
   document.querySelector("#main-game-image").src = src;
@@ -26,38 +66,6 @@ const createSimGame = (src, title, description) => {
       </div>
     `
   return similarGame;
-}
-
-// Queries the API and updates DOM with main and similar game info
-const bgaSearch = async (url) => {
-  const response = await fetch(url)
-  const jsonData = await response.json();
-  console.log(jsonData);
-
-  updateGameInfo(
-    jsonData.games[0].images.large,
-    jsonData.games[0].name,
-    jsonData.games[0].players,
-    jsonData.games[0].playtime,
-    `${jsonData.games[0].min_age}+`,
-    jsonData.games[0].primary_publisher.name,
-    jsonData.games[0].year_published,
-    jsonData.games[0].description_preview
-  );
-
-  for (let index = 1; index < jsonData.games.length; index++){
-    const gameInfo = createSimGame(
-      jsonData.games[index].images.large,
-      jsonData.games[index].name,
-      jsonData.games[index].description_preview
-    );
-
-    let game = document.createElement('div');
-    game.classList.add("similar-game");
-    game.innerHTML = gameInfo;
-
-    document.querySelector(".similar-games-list").append(game);
-  }
 }
 
 // Retrieves all values from input fields and returns an API url
