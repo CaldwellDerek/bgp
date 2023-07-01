@@ -4,6 +4,7 @@ const CLIENTID1 = "dgPmhIgzGb"
 window.addEventListener("DOMContentLoaded", async () => {
   await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
   setTimeout(()=>{
+    document.querySelector("body").style.overflowY = "scroll";
     document.querySelector(".page-load").style.display = "none";
   }, 500)
   
@@ -140,7 +141,8 @@ document.querySelector(".close-search").addEventListener("click", () => {
 
 // Adds event listener to both search buttons and queries the API
 for(let button of document.querySelectorAll(".search-btn")){
-  button.addEventListener("click", () => {
-    bgaSearch(getInputVals());
+  button.addEventListener("click", async () => {
+    await bgaSearch(getInputVals());
+    document.querySelector(".similar-games-list").style.display = "block";
   })
 }
