@@ -197,7 +197,6 @@ input::placeholder {
 
 .site-title,
 .game-search,
-#header-btn,
 #advanced-search {
     z-index: 10;
 }
@@ -223,7 +222,7 @@ input::placeholder {
 }
 
 .game-search {
-    width: 50%;
+    width: 80%;
     display: flex;
 }
 
@@ -242,56 +241,22 @@ input::placeholder {
 .search-btn {
     border-top-right-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
-    border: 0.15rem solid var(--search-bg);
-    background: var(--search-bg);
+    border: 0.15rem solid var(--button-border-colorr);
+    background: var(--button-bg-color);
+    color: var(--button-text-color);
     transition: background 400ms, border-color 400ms;
 }
 
 .search-btn:hover {
     cursor: pointer;
-    background: var(--bg-color);
-    border-color: var(--bg-color);
-}
-
-#header-btn {
-    position: absolute;
-    top: 2rem;
-    right: 2rem;
-    border-color: var(--header-button-border);
-    background: var(--header-button-bg);
-    color: var(--header-button-text);
-    transition: background .5s, border-color .5s, padding .5s;
-}
-
-#header-btn:hover {
-    border-color: var(--header-button-hover);
-    padding: 1rem;
+    background: var(--button-hover-color);
 }
 
 #advanced-search {
-    position: absolute;
-    bottom: -0.2rem;
-    border-color: var(--header-button-border);
-    background: var(--header-button-bg);
-    color: var(--header-button-text);
-    transition: background .5s, border-color .5s, padding .5s;
+    margin-top: 1rem;;
 }
 
-#advanced-search::after {
-    content: "";
-    position: absolute;
-    top: 100%;
-    left: 42%;
-    margin-left: -.3rem;
-    border-width: .8rem;
-    border-style: solid;
-    border-color: var(--header-button-bg) transparent transparent transparent;
-}
 
-#advanced-search:hover {
-    border-color: var(--header-button-hover);
-    padding: 1rem;
-}
 
 /* Advanced Search Section ---------------------------------------------- */
 
@@ -562,13 +527,14 @@ footer {
     body {
         grid-template-columns: 28% 44% 28%;
     }
+
+    .game-search{
+        width: 44%;
+    }
 }
 
 @media screen and (max-width: 120rem){
 
-    .game-search {
-        width: 80%;
-    }
 
     #header-btn {
         position: relative;
@@ -577,11 +543,9 @@ footer {
         margin-top: 1rem;
     }
 
-
-    
 }
 
-@media screen and (max-width: 42rem){
+@media screen and (max-width: 62.5rem){
     .game-image {
         grid-column: 1 / span 3;
     }
@@ -591,10 +555,6 @@ footer {
 }
 
 @media screen and (max-width: 30rem){
-    body {
-        grid-template-columns: 1% 98% 1%;
-    }
-
     .game-info {
         padding: 1rem;
     }

@@ -2,7 +2,7 @@ const CLIENTID1 = "dgPmhIgzGb"
 
 // Displays random game on page load
 window.addEventListener("DOMContentLoaded", async () => {
-  await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
+  // await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
   setTimeout(()=>{
     document.querySelector("body").style.overflowY = "scroll";
     document.querySelector(".page-load").style.display = "none";
