@@ -432,6 +432,7 @@ input::placeholder {
     grid-row: 4;
     grid-column: 2;
     text-align: center;
+    min-height: 25rem;
 }
 
 .similar-games-list-title {

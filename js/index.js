@@ -12,7 +12,23 @@ const updateGameInfo = (src, title, numPlayers, playtime, ages, publisher, yearP
   document.querySelector("#main-game-description").innerHTML = description;
 }
 
-// Queries the API
+// Uses params to create the similar game elements for DOM
+const createSimGame = (src, title, description) => {
+  const similarGame = 
+    `
+      <div class="similar-game-image">
+        <img src="${src}" alt="placeholder">
+      </div>
+      <div class="similar-game-info">
+        <h3>${title}</h3>
+        <p>${description}</p>
+        <button class="btn" type="button">View More</button>
+      </div>
+    `
+  return similarGame;
+}
+
+// Queries the API and updates DOM with main and similar game info
 const bgaSearch = async (url) => {
   const response = await fetch(url)
   const jsonData = await response.json();
@@ -28,6 +44,20 @@ const bgaSearch = async (url) => {
     jsonData.games[0].year_published,
     jsonData.games[0].description_preview
   );
+
+  for (let index = 1; index < jsonData.games.length; index++){
+    const gameInfo = createSimGame(
+      jsonData.games[index].images.large,
+      jsonData.games[index].name,
+      jsonData.games[index].description_preview
+    );
+
+    let game = document.createElement('div');
+    game.classList.add("similar-game");
+    game.innerHTML = gameInfo;
+
+    document.querySelector(".similar-games-list").append(game);
+  }
 }
 
 // Retrieves all values from input fields and returns an API url
@@ -36,7 +66,7 @@ const getInputVals = () => {
   for (let input of document.querySelectorAll("input")){
     searchParams.push(input.value);
   }
-  const apiURL = `https://api.boardgameatlas.com/api/search?limit=1&name=${searchParams[0]}&publisher=${searchParams[1]}&year_published=${searchParams[2]}&min_players=${searchParams[3]}&min_age=${searchParams[4]}&min_playtime=${searchParams[5]}&client_id=${CLIENTID1}`
+  const apiURL = `https://api.boardgameatlas.com/api/search?limit=5&name=${searchParams[0]}&publisher=${searchParams[1]}&year_published=${searchParams[2]}&min_players=${searchParams[3]}&min_age=${searchParams[4]}&min_playtime=${searchParams[5]}&client_id=${CLIENTID1}`
   return apiURL;
 }
 
