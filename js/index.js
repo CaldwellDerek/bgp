@@ -26,16 +26,25 @@ const bgaSearch = async (url) => {
     jsonData.games[0].year_published,
     jsonData.games[0].description_preview
   );
+
+  for (let similarGame of document.querySelectorAll(".similar-game")){
+    similarGame.remove();
+  }
+
   for (let index = 1; index < jsonData.games.length; index++){
-    const gameInfo = createSimGame(
+    // const gameInfo = createSimGame(
+    //   jsonData.games[index].images.large,
+    //   jsonData.games[index].name,
+    //   jsonData.games[index].description_preview
+    // );
+
+    let game = document.createElement('div');
+    game.classList.add("similar-game");
+    game.innerHTML = createSimGame(
       jsonData.games[index].images.large,
       jsonData.games[index].name,
       jsonData.games[index].description_preview
     );
-
-    let game = document.createElement('div');
-    game.classList.add("similar-game");
-    game.innerHTML = gameInfo;
 
     document.querySelector(".similar-games-list").append(game);
   }
