@@ -136,8 +136,8 @@ h6 {
 
 .page-load {
     position: absolute;
-    top: 0;
-    bottom: -300vh;
+    top: 22rem;
+    bottom: 0;
     right: 0;
     left: 0;
     background: var(--bg-color);
@@ -160,8 +160,9 @@ h6 {
 .page-load-container {
     height: 100vh;
     width: 100vw;
+    margin-top: 5rem;
     display: flex;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
 }
 

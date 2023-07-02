@@ -12,6 +12,8 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 // Queries the API and updates DOM with main and similar game info
 const bgaSearch = async (url) => {
+  document.querySelector(".page-load").style.display = "block";
+  document.querySelector("body").style.overflowY = "hidden";
   const response = await fetch(url)
   const jsonData = await response.json();
   console.log(jsonData);
@@ -46,6 +48,12 @@ const bgaSearch = async (url) => {
     createListener(game.querySelector(".view-more"));
     document.querySelector(".similar-games-list").append(game);
   }
+
+  setTimeout(()=>{
+    document.querySelector(".page-load").style.display = "none";
+    document.querySelector("body").style.overflowY = "scroll";
+  }, 500)
+
 }
 
 // Uses parameters to update DOM with values
