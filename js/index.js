@@ -91,6 +91,7 @@ const createListener = (element) => {
       jsonData.games[0].year_published,
       jsonData.games[0].description_preview
     );
+    window.location.href = "#top";
   });
 }
 
@@ -100,8 +101,8 @@ const getInputVals = () => {
   for (let input of document.querySelectorAll("input")){
     searchParams.push(input.value);
   }
-  const apiURL = `https://api.boardgameatlas.com/api/search?limit=5&name=${searchParams[0]}&publisher=${searchParams[1]}&year_published=${searchParams[2]}&min_players=${searchParams[3]}&min_age=${searchParams[4]}&min_playtime=${searchParams[5]}&client_id=${CLIENTID1}`
-  return apiURL;
+   return `https://api.boardgameatlas.com/api/search?limit=5&name=${searchParams[0]}&publisher=${searchParams[1]}&year_published=${searchParams[2]}&min_players=${searchParams[3]}&min_age=${searchParams[4]}&min_playtime=${searchParams[5]}&client_id=${CLIENTID1}`;
+  
 }
 
 // Removes slide down animation on advanced search bar
