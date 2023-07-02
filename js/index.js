@@ -2,11 +2,11 @@ const CLIENTID1 = "dgPmhIgzGb"
 
 // Displays random game on page load
 window.addEventListener("DOMContentLoaded", async () => {
-  // await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
+  await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
   setTimeout(()=>{
     document.querySelector("body").style.overflowY = "scroll";
     document.querySelector(".page-load").style.display = "none";
-  }, 500)
+  }, 1000)
   
 });
 
@@ -14,45 +14,62 @@ window.addEventListener("DOMContentLoaded", async () => {
 const bgaSearch = async (url) => {
   document.querySelector(".page-load").style.display = "block";
   document.querySelector("body").style.overflowY = "hidden";
+  document.querySelector(".game-info-buttons").style.visibility = "hidden";
   const response = await fetch(url)
   const jsonData = await response.json();
   console.log(jsonData);
-
-  // Uses fetch info to populate main game info
-  updateGameInfo(
-    jsonData.games[0].images.large,
-    jsonData.games[0].name,
-    jsonData.games[0].players,
-    jsonData.games[0].playtime,
-    `${jsonData.games[0].min_age}+`,
-    jsonData.games[0].primary_publisher.name,
-    jsonData.games[0].year_published,
-    jsonData.games[0].description_preview
-  );
-
-  // Removes similar games from previous search if they exist
-  for (let similarGame of document.querySelectorAll(".similar-game")){
-    similarGame.remove();
-  }
-
-  // For each game after the first, creates a similar game element and adds to the DOM
-  for (let index = 1; index < jsonData.games.length; index++){
-    let game = document.createElement('div');
-    game.classList.add("similar-game");
-    game.innerHTML = createSimGame(
-      jsonData.games[index].images.large,
-      jsonData.games[index].name,
-      jsonData.games[index].description_preview,
-      jsonData.games[index].id
+  
+  if (jsonData.games.length <= 0){
+    updateGameInfo(
+      "./images/placeholder.jpg",
+      "NO GAMES FOUND",
+      "N/A",
+      "N/A",
+      "N/A",
+      "N/A",
+      "N/A",
+      "No game was found with the current search criteria, please adjust and try again."
     );
-    createListener(game.querySelector(".view-more"));
-    document.querySelector(".similar-games-list").append(game);
+  } else {
+  // Uses fetch info to populate main game info
+    updateGameInfo(
+      jsonData.games[0].images.large,
+      jsonData.games[0].name,
+      jsonData.games[0].players,
+      jsonData.games[0].playtime,
+      `${jsonData.games[0].min_age}+`,
+      jsonData.games[0].primary_publisher.name,
+      jsonData.games[0].year_published,
+      jsonData.games[0].description_preview
+      
+    );
+
+    // Removes similar games from previous search if they exist
+    for (let similarGame of document.querySelectorAll(".similar-game")){
+      similarGame.remove();
+    }
+
+    // For each game after the first, creates a similar game element and adds to the DOM
+    for (let index = 1; index < jsonData.games.length; index++){
+      let game = document.createElement('div');
+      game.classList.add("similar-game");
+      game.innerHTML = createSimGame(
+        jsonData.games[index].images.large,
+        jsonData.games[index].name,
+        jsonData.games[index].description_preview,
+        jsonData.games[index].id
+      );
+      createListener(game.querySelector(".view-more"));
+      document.querySelector(".similar-games-list").append(game);
+    }
+
+    document.querySelector(".game-info-buttons").style.visibility = "visible";
   }
 
   setTimeout(()=>{
     document.querySelector(".page-load").style.display = "none";
     document.querySelector("body").style.overflowY = "scroll";
-  }, 500)
+  }, 1000)
 
 }
 
@@ -177,6 +194,7 @@ document.querySelector(".close-search").addEventListener("click", () => {
 for(let button of document.querySelectorAll(".search-btn")){
   button.addEventListener("click", async () => {
     await bgaSearch(getInputVals());
+    hideAdvSearch();
     document.querySelector(".similar-games-list").style.display = "block";
   })
 }
