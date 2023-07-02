@@ -10,12 +10,13 @@ window.addEventListener("DOMContentLoaded", async () => {
   
 });
 
-
 // Queries the API and updates DOM with main and similar game info
 const bgaSearch = async (url) => {
   const response = await fetch(url)
   const jsonData = await response.json();
   console.log(jsonData);
+
+  // Uses fetch info to populate main game info
   updateGameInfo(
     jsonData.games[0].images.large,
     jsonData.games[0].name,
@@ -27,25 +28,22 @@ const bgaSearch = async (url) => {
     jsonData.games[0].description_preview
   );
 
+  // Removes similar games from previous search if they exist
   for (let similarGame of document.querySelectorAll(".similar-game")){
     similarGame.remove();
   }
 
+  // For each game after the first, creates a similar game element and adds to the DOM
   for (let index = 1; index < jsonData.games.length; index++){
-    // const gameInfo = createSimGame(
-    //   jsonData.games[index].images.large,
-    //   jsonData.games[index].name,
-    //   jsonData.games[index].description_preview
-    // );
-
     let game = document.createElement('div');
     game.classList.add("similar-game");
     game.innerHTML = createSimGame(
       jsonData.games[index].images.large,
       jsonData.games[index].name,
-      jsonData.games[index].description_preview
+      jsonData.games[index].description_preview,
+      jsonData.games[index].id
     );
-
+    createListener(game.querySelector(".view-more"));
     document.querySelector(".similar-games-list").append(game);
   }
 }
@@ -63,7 +61,7 @@ const updateGameInfo = (src, title, numPlayers, playtime, ages, publisher, yearP
 }
 
 // Uses params to create the similar game elements for DOM
-const createSimGame = (src, title, description) => {
+const createSimGame = (src, title, description, gameId) => {
   const similarGame = 
     `
       <div class="similar-game-image">
@@ -72,10 +70,28 @@ const createSimGame = (src, title, description) => {
       <div class="similar-game-info">
         <h3>${title}</h3>
         <p>${description}</p>
-        <button class="btn" type="button">View More</button>
+        <button data-id="${gameId}" class="view-more btn" type="button">View More</button>
       </div>
     `
   return similarGame;
+}
+
+// Creates event listener on View More buttons to populate main game information section
+const createListener = (element) => {
+  element.addEventListener("click", async () => {
+    const response = await fetch(`https://api.boardgameatlas.com/api/search?ids=${element.getAttribute("data-id")}&client_id=${CLIENTID1}`)
+    const jsonData = await response.json();
+    updateGameInfo(
+      jsonData.games[0].images.large,
+      jsonData.games[0].name,
+      jsonData.games[0].players,
+      jsonData.games[0].playtime,
+      `${jsonData.games[0].min_age}+`,
+      jsonData.games[0].primary_publisher.name,
+      jsonData.games[0].year_published,
+      jsonData.games[0].description_preview
+    );
+  });
 }
 
 // Retrieves all values from input fields and returns an API url
