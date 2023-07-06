@@ -19,7 +19,6 @@ const populateYTVideo = async (gameName) => {
   });
   const jsonData = await response.json();
 
-  console.log(jsonData);
   document.querySelector("iframe").src = `https://www.youtube.com/embed/${jsonData.items[0].id.videoId}`
 }
 
@@ -43,6 +42,7 @@ const bgaSearch = async (url) => {
       "N/A",
       "No game was found with the current search criteria, please adjust and try again."
     );
+    document.querySelector("#player").src="";
   } else {
   // Uses fetch info to populate main game info
     updateGameInfo(
@@ -53,7 +53,7 @@ const bgaSearch = async (url) => {
       `${jsonData.games[0].min_age}+`,
       jsonData.games[0].primary_publisher.name,
       jsonData.games[0].year_published,
-      jsonData.games[0].description_preview
+      jsonData.games[0].description
       
     );
     populateYTVideo(document.querySelector("#main-game-title").textContent)
@@ -69,7 +69,7 @@ const bgaSearch = async (url) => {
       game.innerHTML = createSimGame(
         jsonData.games[index].images.large,
         jsonData.games[index].name,
-        jsonData.games[index].description_preview,
+        jsonData.games[index].description,
         jsonData.games[index].id
       );
       createListener(game.querySelector(".view-more"));
@@ -107,7 +107,7 @@ const createSimGame = (src, title, description, gameId) => {
       </div>
       <div class="similar-game-info">
         <h3>${title}</h3>
-        <p>${description}</p>
+        <div>${description}</div>
         <button data-id="${gameId}" class="view-more btn" type="button">View More</button>
       </div>
     `
@@ -127,7 +127,7 @@ const createListener = (element) => {
       `${jsonData.games[0].min_age}+`,
       jsonData.games[0].primary_publisher.name,
       jsonData.games[0].year_published,
-      jsonData.games[0].description_preview
+      jsonData.games[0].description
     );
     populateYTVideo(jsonData.games[0].name);
     window.location.href = "#top";
