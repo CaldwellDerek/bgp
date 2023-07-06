@@ -1,9 +1,9 @@
-const CLIENTID1 = "dgPmhIgzGb"
-const CLIENTID2 = "AIzaSyBDsfH-p60RH4HGaZ8FKWozhjZW7LCA_CY"
+const BGAID = "dgPmhIgzGb"
+const YTID = "AIzaSyBDsfH-p60RH4HGaZ8FKWozhjZW7LCA_CY"
 
 // Displays random game on page load
 window.addEventListener("DOMContentLoaded", async () => {
-  await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
+  await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${BGAID}`);
   setTimeout(()=>{
     document.querySelector("body").style.overflowY = "scroll";
     document.querySelector(".page-load").style.display = "none";
@@ -12,7 +12,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
 // Queries youtube for boardgame tutorial and updates embedded yt video
 const populateYTVideo = async (gameName) => {
-  const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${CLIENTID2}&type=video&part=snippet&maxResults=1&q=${"how to play the boardgame: " + gameName}`, {
+  const response = await fetch(`https://www.googleapis.com/youtube/v3/search?key=${YTID}&type=video&part=snippet&maxResults=1&q=${"how to play the boardgame: " + gameName}`, {
     headers: {
       "Content-Type": "application/json"
     }
@@ -44,7 +44,6 @@ const bgaSearch = async (url) => {
     );
     document.querySelector("#player").src="";
   } else {
-  // Uses fetch info to populate main game info
     updateGameInfo(
       jsonData.games[0].images.large,
       jsonData.games[0].name,
@@ -57,12 +56,13 @@ const bgaSearch = async (url) => {
       
     );
     populateYTVideo(document.querySelector("#main-game-title").textContent)
-    // Removes similar games from previous search if they exist
+    
+    document.querySelector(".purchase-link").href = jsonData.games[0].url;
+
     for (let similarGame of document.querySelectorAll(".similar-game")){
       similarGame.remove();
     }
 
-    // For each game after the first, creates a similar game element and adds to the DOM
     for (let index = 1; index < jsonData.games.length; index++){
       let game = document.createElement('div');
       game.classList.add("similar-game");
@@ -117,7 +117,7 @@ const createSimGame = (src, title, description, gameId) => {
 // Creates event listener on View More buttons to populate main game information section
 const createListener = (element) => {
   element.addEventListener("click", async () => {
-    const response = await fetch(`https://api.boardgameatlas.com/api/search?ids=${element.getAttribute("data-id")}&client_id=${CLIENTID1}`)
+    const response = await fetch(`https://api.boardgameatlas.com/api/search?ids=${element.getAttribute("data-id")}&client_id=${BGAID}`)
     const jsonData = await response.json();
     updateGameInfo(
       jsonData.games[0].images.large,
@@ -130,7 +130,9 @@ const createListener = (element) => {
       jsonData.games[0].description
     );
     populateYTVideo(jsonData.games[0].name);
+    document.querySelector(".purchase-link").href = jsonData.games[0].url;
     window.location.href = "#top";
+    document.query
   });
 }
 
@@ -140,7 +142,7 @@ const getInputVals = () => {
   for (let input of document.querySelectorAll("input")){
     searchParams.push(input.value);
   }
-   return `https://api.boardgameatlas.com/api/search?limit=5&name=${searchParams[0]}&publisher=${searchParams[1]}&year_published=${searchParams[2]}&min_players=${searchParams[3]}&min_age=${searchParams[4]}&min_playtime=${searchParams[5]}&client_id=${CLIENTID1}`;
+   return `https://api.boardgameatlas.com/api/search?limit=5&name=${searchParams[0]}&publisher=${searchParams[1]}&year_published=${searchParams[2]}&min_players=${searchParams[3]}&min_age=${searchParams[4]}&min_playtime=${searchParams[5]}&client_id=${BGAID}`;
   
 }
 
