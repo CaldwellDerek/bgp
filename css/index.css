@@ -18,8 +18,8 @@
     --tooltip-color: #FFE6A7;
     --image-border: #6F1D1B;
     --similar-game-border: #432818;
-    --filter: invert(15%) sepia(32%) saturate(3852%) hue-rotate(339deg) brightness(95%) contrast(96%);
-    --filter-hover: invert(10%) sepia(10%) saturate(3328%) hue-rotate(339deg) brightness(98%) contrast(93%);
+    --filter: invert(64%) sepia(14%) saturate(1261%) hue-rotate(358deg) brightness(92%) contrast(90%);
+    --filter-hover: invert(83%) sepia(9%) saturate(1424%) hue-rotate(345deg) brightness(111%) contrast(101%);
     --game-info-filter: invert(8%) sepia(10%) saturate(6232%) hue-rotate(350deg) brightness(92%) contrast(89%);
     
 }
