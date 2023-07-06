@@ -129,6 +129,7 @@ const createListener = (element) => {
       jsonData.games[0].year_published,
       jsonData.games[0].description_preview
     );
+    populateYTVideo(jsonData.games[0].name);
     window.location.href = "#top";
   });
 }
