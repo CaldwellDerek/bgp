@@ -1,14 +1,30 @@
 const CLIENTID1 = "dgPmhIgzGb"
+const CLIENTID2 = "AIzaSyBDsfH-p60RH4HGaZ8FKWozhjZW7LCA_CY"
 
 // Displays random game on page load
 window.addEventListener("DOMContentLoaded", async () => {
   await bgaSearch(`https://api.boardgameatlas.com/api/search?random=true&client_id=${CLIENTID1}`);
+  await ytTest(document.querySelector("#main-game-title").textContent);
   setTimeout(()=>{
     document.querySelector("body").style.overflowY = "scroll";
     document.querySelector(".page-load").style.display = "none";
-  }, 1000)
-  
+  }, 1000)  
 });
+
+const ytTest = async (gameName) => {
+  const url = `https://www.googleapis.com/youtube/v3/search?key=${CLIENTID2}&type=video&part=snippet&maxResults=1&q=${"how to play the boardgame: " + gameName}`
+  console.log(url);
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json"
+    }
+  });
+  const jsonData = await response.json();
+
+  console.log(jsonData);
+  document.querySelector("iframe").src = `https://www.youtube.com/embed/${jsonData.items[0].id.videoId}`
+}
+
 
 // Queries the API and updates DOM with main and similar game info
 const bgaSearch = async (url) => {
