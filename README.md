@@ -25,7 +25,7 @@ This project offers an easy to use application that allows you to quickly find b
 - [YouTube API](https://developers.google.com/youtube/v3)
 
 ## Installation
-No installation is necessary for this project, you can access this application at the following [link](www.google.com). 
+No installation is necessary for this project, you can access this application at the following [link](https://bgp-solo-52397be8b8c1.herokuapp.com/index.html). 
 
 ## Usage
 Quickly search and learn about the next best game for your board game parties.
